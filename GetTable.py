@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (QMainWindow, QApplication,QSizePolicy,QFileDialog,
                              QMessageBox,QProgressBar,QRadioButton,QListWidgetItem)
-import main
+import Template
 import numpy as np
 class Player(main.Ui_MainWindow,QMainWindow):
     def __init__(self):
