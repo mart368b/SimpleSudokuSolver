@@ -1,6 +1,6 @@
 from pprint import pprint
 from board import Board
-import random
+import time
 
 def run():
     base_board = [
@@ -76,7 +76,7 @@ def run():
     """
     https://anysudokusolver.com/
     a = document.getElementsByTagName("INPUT");
-    v = [2, 4, 6, 9, 7, 8, 1, 5, 3, 9, 5, 7, 1, 6, 3, 8, 4, 2, 3, 1, 8, 2, 5, 4, 7, 6, 9, 1, 6, 9, 8, 3, 2, 5, 7, 4, 4, 8, 5, 7, 9, 1, 2, 3, 6, 7, 3, 2, 6, 4, 5, 9, 8, 1, 5, 2, 1, 3, 8, 6, 4, 9, 7, 8, 9, 3, 4, 2, 7, 6, 1, 5, 6, 7, 4, 5, 1, 9, 3, 2, 8];
+    v = [8, 1, 2, 7, 5, 3, 6, 4, 9, 9, 4, 3, 6, 8, 2, 1, 7, 5, 6, 7, 5, 4, 9, 1, 2, 8, 3, 1, 5, 4, 2, 3, 7, 8, 9, 6, 3, 6, 9, 8, 4, 5, 7, 2, 1, 2, 8, 7, 1, 6, 9, 5, 3, 4, 5, 2, 1, 9, 7, 4, 3, 6, 8, 4, 3, 8, 5, 2, 6, 9, 1, 7, 7, 9, 6, 3, 1, 8, 4, 5, 2];
     for (let i = 0; i < v.length; i++){
         a[i].value = v[i];
     }
@@ -89,5 +89,8 @@ def run():
     solved = board.solve()
     print(board.board)
 
+then = time.time()
 
 run()
+
+print(time.time() - then)

@@ -113,7 +113,7 @@ class Board:
                     raise KeyError('')
 
 
-    def solve(self, indent = 0) -> list:
+    def solve(self) -> list:
         if self.is_solved():
             return []
 
@@ -131,26 +131,23 @@ class Board:
             return []
             
         if len(safe_changes) > 0:
-            return self.solve(indent=indent + 1) + safe_changes
+            return self.solve() + safe_changes
         else:
-            for i in range(0, len(self.solver_board)):
-                solver = self.solver_board[i]
-                if len(solver) > 1 and len(solver) <= 2:
+            sorted_board = sorted(enumerate(self.solver_board), key=lambda x: len(x[1]))
+            for i, solver in sorted_board:
+                if len(solver) > 1:
                     for a in list(solver):
                         old_value = self.board[i]
                         self.board[i] = a
                         self.update_solver(self.solver_board, i, a)
                         # print(' '*indent + '(' + str(i%WIDTH) + ', ' + str(int(i/HEIGHT)) + ') = ' + str(a))
                         self.blanks -= 1
-                        unsafe_changes = self.solve(indent=indent + 1)
+                        unsafe_changes = self.solve()
                         unsafe_changes.append((i, old_value))
                         if self.is_solved():
                             return unsafe_changes
                         else:
                             if self.blanks <= self.lowest_blanks:
-                                #print(self.blanks)
-                                #print(self.str_solver(self.solver_board))
-                                #print(self)
                                 self.lowest_blanks = self.blanks
                             for j, v in unsafe_changes:
                                 self.board[j] = v
